@@ -5,7 +5,7 @@ on:
     branches: [ main, actions ]
 
 env:
-    DOTNETVERSION: 8.0.100
+    DOTNETVERSION: 8.0.101
     CONFIGURATION: Release # Values: Debug, Release
     RUNTIMEIDENTIFIER: win10-x64
     PLATFORM: x64
