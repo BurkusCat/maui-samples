@@ -41,6 +41,11 @@
 		<GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
 		<AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
 	</PropertyGroup>
+	
+	<!-- Runtime identifier override https://github.com/microsoft/WindowsAppSDK/issues/3337 -->
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows' and '$(RuntimeIdentifierOverride)' != ''">
+		<RuntimeIdentifier>$(RuntimeIdentifierOverride)</RuntimeIdentifier>
+	</PropertyGroup>
 
 	<!-- For iOS publish-->
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
