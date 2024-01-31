@@ -1,4 +1,4 @@
-name: Build Windows Release
+name: Build Windows Packaged Release
 
 on:
   push:
@@ -12,7 +12,7 @@ env:
     VERSIONNUMBER: 1.${{ github.run_number }}.${{ github.run_attempt }}
     
 jobs:
-  buildWindows:
+  buildWindowsPackaged:
     runs-on: windows-latest
 
     steps:
@@ -43,6 +43,7 @@ jobs:
 
       # https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certutil
       # commandline util to encode to base64 on windows
+      # openssl enc -base64 -a -in WinSignCert.pfx -out WinSignCert_base64.txt
       - name: Create signing pfx file from secrets
         shell: pwsh
         id: secret-file
@@ -89,7 +90,3 @@ jobs:
               ref: ref,
               sha: context.sha
             });
-            
-      # Archive the package for app center upload
-      - name: Create archive
-        run: Compress-Archive -Path 8.0\Apps\WeatherTwentyOne\src\WeatherTwentyOne\bin\${{ env.PLATFORM }}\${{ env.CONFIGURATION }}\net8.0-windows10.0.19041.0\${{ env.RUNTIMEIDENTIFIER }}\AppPackages\ -DestinationPath Binaries.zip
