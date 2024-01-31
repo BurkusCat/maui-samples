@@ -19,6 +19,9 @@
     <ApplicationId>com.companyname.WeatherTwentyOne</ApplicationId>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <SingleProject>true</SingleProject>
+
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
 
 	<!-- (Optional) Pin to a specific version -->
