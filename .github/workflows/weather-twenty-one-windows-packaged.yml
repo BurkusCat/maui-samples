@@ -67,7 +67,7 @@ jobs:
       - name: Build Windows MSIX
         run: |
           cd .\8.0\Apps\WeatherTwentyOne\src\WeatherTwentyOne\
-          dotnet publish -f net8.0-windows10.0.19041.0 -c:${{ env.CONFIGURATION }} -p:PackageCertificateThumbprint=${{ secrets.WIN_CERT_THUMBPRINT }} -p:RuntimeIdentifierOverride=${{ env.RUNTIMEIDENTIFIER }}
+          dotnet publish -f net8.0-windows10.0.19041.0 -c:${{ env.CONFIGURATION }} -p:PackageCertificateThumbprint=${{ secrets.WIN_CERT_THUMBPRINT }} -p:RuntimeIdentifierOverride=${{ env.RUNTIMEIDENTIFIER }} WeatherTwentyOne.csproj
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
